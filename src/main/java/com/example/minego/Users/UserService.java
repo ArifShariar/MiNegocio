@@ -86,7 +86,7 @@ public class UserService {
     }
 
     public List<User> searchUserByName(String name) {
-        return userRepository.findByNamesContaining(name);
+        return userRepository.searchUserByNamesContaining(name);
     }
 
     public List<Object[]> getAddressByIdentificationNumber(String identificationNumber) {

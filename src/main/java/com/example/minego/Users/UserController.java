@@ -117,4 +117,17 @@ public class UserController {
     }
 
 
+    // search user by name
+    @GetMapping("/search/name/{name}")
+    public ResponseEntity<List<User>> searchUserByName(@PathVariable("name") String name){
+        List<User> users = userService.searchUserByName(name);
+        if (users != null) {
+            return ResponseEntity.ok(users);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }

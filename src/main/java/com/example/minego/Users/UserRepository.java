@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByEmailOrIdentificationNumber(String email, String identificationNumber);
 
-    List<User> findByNamesContaining(String name);
+    List<User> searchUserByNamesContaining(String name);
 
 
     @Query(value = "SELECT main_address , main_province, main_city FROM users WHERE id = ?1", nativeQuery = true)
