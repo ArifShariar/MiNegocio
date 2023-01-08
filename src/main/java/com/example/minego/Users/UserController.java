@@ -1,7 +1,6 @@
 package com.example.minego.Users;
 
 
-import com.example.minego.Addresses.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -28,7 +27,7 @@ public class UserController {
     // get all users
     @GetMapping("/all")
     public List<User> getAllUsers(){
-        return userService.getAllUsersWithAddress();
+        return userService.findAllUsers();
     }
 
     // get user by id

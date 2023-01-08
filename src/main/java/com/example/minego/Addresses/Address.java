@@ -19,6 +19,10 @@ public class Address {
 
     private String city;
 
+
+    @OneToMany(mappedBy = "head_office_address")
+    private List<User> users;
+
     public Address(String address, String province, String city) {
         this.address = address;
         this.province = province;

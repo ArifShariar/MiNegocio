@@ -31,16 +31,15 @@ public class User {
 
     private String mainAddress;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "head_office_address_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "head_office_address_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Address headOfficeAddress;
-
+    private Address head_office_address;
 
     public User() {
     }
 
-    public User(Long id, IdentificationType identificationType, String identificationNumber, String names, String email, String cellPhone, String mainProvince, String mainCity, String mainAddress, Address headOfficeAddress) {
+    public User(Long id, IdentificationType identificationType, String identificationNumber, String names, String email, String cellPhone, String mainProvince, String mainCity, String mainAddress) {
         this.id = id;
         this.identificationType = identificationType;
         this.identificationNumber = identificationNumber;
@@ -50,10 +49,9 @@ public class User {
         this.mainProvince = mainProvince;
         this.mainCity = mainCity;
         this.mainAddress = mainAddress;
-        this.headOfficeAddress = headOfficeAddress;
     }
 
-    public User(IdentificationType identificationType, String identificationNumber, String names, String email, String cellPhone, String mainProvince, String mainCity, String mainAddress, Address headOfficeAddress) {
+    public User(IdentificationType identificationType, String identificationNumber, String names, String email, String cellPhone, String mainProvince, String mainCity, String mainAddress) {
         this.identificationType = identificationType;
         this.identificationNumber = identificationNumber;
         this.names = names;
@@ -62,7 +60,18 @@ public class User {
         this.mainProvince = mainProvince;
         this.mainCity = mainCity;
         this.mainAddress = mainAddress;
-        this.headOfficeAddress = headOfficeAddress;
+    }
+
+    public User(IdentificationType identificationType, String identificationNumber, String names, String email, String cellPhone, String mainProvince, String mainCity, String mainAddress, Address head_office_address) {
+        this.identificationType = identificationType;
+        this.identificationNumber = identificationNumber;
+        this.names = names;
+        this.email = email;
+        this.cellPhone = cellPhone;
+        this.mainProvince = mainProvince;
+        this.mainCity = mainCity;
+        this.mainAddress = mainAddress;
+        this.head_office_address = head_office_address;
     }
 
     public Long getId() {
@@ -137,12 +146,12 @@ public class User {
         this.mainAddress = mainAddress;
     }
 
-    public Address getHeadOfficeAddress() {
-        return headOfficeAddress;
+    public Address getHead_office_address() {
+        return head_office_address;
     }
 
-    public void setHeadOfficeAddress(Address headOfficeAddress) {
-        this.headOfficeAddress = headOfficeAddress;
+    public void setHead_office_address(Address head_office_address) {
+        this.head_office_address = head_office_address;
     }
 
     @Override
@@ -157,7 +166,6 @@ public class User {
                 ", mainProvince='" + mainProvince + '\'' +
                 ", mainCity='" + mainCity + '\'' +
                 ", mainAddress='" + mainAddress + '\'' +
-                ", headOfficeAddress=" + headOfficeAddress +
                 '}';
     }
 }

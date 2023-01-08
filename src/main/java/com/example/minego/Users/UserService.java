@@ -77,9 +77,6 @@ public class UserService {
             if(user.getMainAddress()!=null){
                 existingUser.setMainAddress(user.getMainAddress());
             }
-            if(user.getHeadOfficeAddress()!=null){
-                existingUser.setHeadOfficeAddress(user.getHeadOfficeAddress());
-            }
 
             return userRepository.save(existingUser);
         }
@@ -102,4 +99,7 @@ public class UserService {
     }
 
 
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
 }
