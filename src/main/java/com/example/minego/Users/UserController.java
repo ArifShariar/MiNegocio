@@ -95,6 +95,19 @@ public class UserController {
         }
     }
 
+    // update a user provided identification number
+    @Transactional
+    @PutMapping("/update/identification/{identificationNumber}")
+    public ResponseEntity<User> updateUser(@PathVariable("identificationNumber") String identificationNumber, @RequestBody User user) {
+        User user1 = userService.updateUserByIdentificationNumber(identificationNumber, user);
+        if (user1 != null) {
+            return ResponseEntity.ok(user1);
+        }
+        else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
     // get address by identification number
     @GetMapping("/address/{identificationNumber}")
     public ResponseEntity<String> getAddressByIdentificationNumber(@PathVariable("identificationNumber") String identificationNumber){
